@@ -85,6 +85,7 @@ function handleVideoChange() {
     console.log('Video changed!');
     console.log('pause the video');
     console.log('and new tab leading to a reference page.');
+    
     window.open("https://www.educative.io/", "_blank");
   }
 
