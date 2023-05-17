@@ -60,10 +60,10 @@
   
   #changeVideo {
     position: absolute;
-    top: 10px;
+    top: 30%;
     left: 10px;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     opacity: 1; /*0 */ 
     transition: opacity .3s ease;
     cursor: pointer;
@@ -78,12 +78,25 @@
     /* End */
   }
   
-  /* On hovering the video, show the button */
-  video:hover~#changeVideo {
-    color: blue;
-  }
+  
   
   #changeVideo:hover {
     color: blue;
   }
+
+
+  .button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .button1 {background-color: #4CAF50;} /* Green */
+  .button2 {background-color: #008CBA;} /* Blue */
   
