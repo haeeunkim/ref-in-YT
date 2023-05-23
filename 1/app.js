@@ -7,11 +7,15 @@ let player;
 let STARTTIME, ENDTIME;
 
 
-let timed_ref = [
-    {starttime: 1000, endtime: 7000, display: "sample reference indicator 1", url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s"},
-    {starttime: 10000, endtime: 12000, display: "sample reference indicator 2", url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub"},
+const objects = [
+    {starttime: 1, endtime: 7, display: "sample reference indicator 1", url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s"},
+    {starttime: 10, endtime: 15, display: "sample reference indicator 2", url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub"},
 
 ];
+
+
+
+
 
 // Replace YOUR_API_KEY with your YouTube Data API key
 const API_KEY = "AIzaSyAbjDRiwBgSX2HcFDHfzIszJsKoj3st46I";
@@ -73,10 +77,33 @@ function displaySomething() {
 
 }
 
+
+function traverseList(currentTime) {
+    
+    for (let i = 0; i < objects.length; i++) {
+      const obj = objects[i];
+      
+      if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
+        document.getElementById("referenceButton").style.visibility = "visible";
+        // Perform operations for the current object
+        
+        // Add any other logic or operations here
+        break; // Exit the loop once the current object is found
+      }
+      document.getElementById("referenceButton").style.visibility = "hidden";
+    }
+  }
+
+
+  
+  
+
+
 function updateTime() {
     const time = player.getCurrentTime();
     document.getElementById('time').textContent = time;
-
+    traverseList(time);
+    
 
 }
 

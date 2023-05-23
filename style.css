@@ -59,7 +59,7 @@
   
   
   
-  #changeVideo {
+  #referenceButton {
     position: absolute;
     top: 30%;
     left: 10px;
@@ -81,7 +81,7 @@
   
   
   
-  #changeVideo:hover {
+  #referenceButton:hover {
     color: blue;
   }
 
