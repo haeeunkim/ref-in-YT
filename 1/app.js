@@ -3,6 +3,15 @@ const MAX = 300;
 const COUNT = 10;
 const numbers = [];
 
+let player;
+let STARTTIME, ENDTIME;
+
+
+let timed_ref = [
+    {starttime: 1000, endtime: 7000, display: "sample reference indicator 1", url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s"},
+    {starttime: 10000, endtime: 12000, display: "sample reference indicator 2", url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub"},
+
+];
 
 // Replace YOUR_API_KEY with your YouTube Data API key
 const API_KEY = "AIzaSyAbjDRiwBgSX2HcFDHfzIszJsKoj3st46I";
@@ -30,8 +39,8 @@ fetch(API_URL)
         document.getElementById('likes').textContent = statistics.likeCount;
         document.getElementById('dislikes').textContent = statistics.dislikeCount;
 
-        console.log(metadata);
-        console.log(statistics);
+        //console.log(metadata);
+        //console.log(statistics);
         // Add more properties as needed
     })
     .catch(error => console.error(error));
@@ -66,27 +75,30 @@ function displaySomething() {
 
 function updateTime() {
     const time = player.getCurrentTime();
-    if (time > 5 && time < 15) {
-        document.getElementById('time').textContent = time;
-        document.getElementById("metadata-field").style.visibility = "visible";
-        document.getElementById("changeVideo").style.visibility = "hidden";
-        
-    }
-    else {
-        document.getElementById("metadata-field").style.visibility = "hidden";
-        document.getElementById("changeVideo").style.visibility = "visible";
-    }
+    document.getElementById('time').textContent = time;
 
 
 }
-function handleVideoChange() {
-    // Code to change the video
-    // For example, you can use the YouTube Player API to load a new video in the player
-    console.log('Video changed!');
+
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+async function clickReferenceButton() {
+    
     console.log('pause the video');
     console.log('and new tab leading to a reference page.');
+
+if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+    console.log("pause toggle");
+    document.getElementById("metadata-field").style.visibility = "visible";
+  } else {
+    player.playVideo();
+    console.log("play toggle");
+    document.getElementById("metadata-field").style.visibility = "hidden";
+  }
     
-    window.open("https://www.educative.io/", "_blank");
+
+    //window.open("https://www.educative.io/", "_blank");
   }
 
 

@@ -5,6 +5,7 @@
 
 .video-metadata {
     border: 1px solid green ;
+    visibility: hidden;
 }
 
 .video-container {
@@ -99,4 +100,5 @@
   
   .button1 {background-color: #4CAF50;} /* Green */
   .button2 {background-color: #008CBA;} /* Blue */
-  
+
+ 
