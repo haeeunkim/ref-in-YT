@@ -84,13 +84,13 @@ function traverseList(currentTime) {
       const obj = objects[i];
       
       if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
-        document.getElementById("referenceButton").style.visibility = "visible";
+        document.getElementById("_ref").style.visibility = "visible";
         // Perform operations for the current object
         
         // Add any other logic or operations here
         break; // Exit the loop once the current object is found
       }
-      document.getElementById("referenceButton").style.visibility = "hidden";
+      document.getElementById("_ref").style.visibility = "hidden";
     }
   }
 
@@ -109,7 +109,7 @@ function updateTime() {
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
-async function clickReferenceButton() {
+function clickReferenceButton() {
     
     console.log('pause the video');
     console.log('and new tab leading to a reference page.');
