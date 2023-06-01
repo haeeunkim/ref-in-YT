@@ -85,7 +85,7 @@ function traverseList(currentTime) {
       
       if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
         document.getElementById("_ref").style.visibility = "visible";
-        document.getElementById('display').textContent = obj.;
+        //document.getElementById('display').textContent = obj.;
         // Perform operations for the current object
         
         // Add any other logic or operations here
