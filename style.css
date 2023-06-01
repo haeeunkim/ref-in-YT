@@ -90,8 +90,8 @@
   .button {
 
     position: absolute;
-    top: 80%;
-    left: 10px;
+    top: 30%;
+    left: 80%;
     
     opacity: 1; 
     transition: opacity .3s ease;

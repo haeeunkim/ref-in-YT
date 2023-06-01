@@ -73,21 +73,25 @@ function onPlayerReady(event) {
     refbutton.addEventListener('mouseover', function(){
       document.getElementById("monitor").textContent = "mouseover±±±±";
       refbutton.classList.add("button-preview");
+      REFSTATE = "preview";
     });
 
     refbutton.addEventListener('mouseout', function(){
       document.getElementById("monitor").textContent = "mouseout---";
       refbutton.classList.remove("button-preview"); 
+      REFSTATE = "standby";
     });
     
     refbutton.addEventListener('touchstart', function(){
       document.getElementById("monitor").textContent = "touchstart";
       refbutton.classList.add("button-preview");
+      REFSTATE = "preview";
     });
 
     refbutton.addEventListener('touchend', function(){
       document.getElementById("monitor").textContent = "touchend---";
       refbutton.classList.remove("button-preview");
+      REFSTATE = "standby";
     });
   
 }
@@ -111,7 +115,7 @@ function traverseList(currentTime) {
       
       if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
         document.getElementById("_ref").style.visibility = "visible";
-        REFSTATE = 'standby';
+        
 
 
         document.getElementById('button_text').textContent = obj.button_text;
@@ -155,7 +159,7 @@ function clickReferenceButton() {
     console.log('pause the video');
     console.log('and new tab leading to a reference page.');
 
-if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+if (player && player.getPlayerState() === YT.PlayerState.PLAYING && REFSTATE == "preview") {
     player.pauseVideo();
     console.log("pause toggle");
     document.getElementById("metadata-field").style.visibility = "visible";
