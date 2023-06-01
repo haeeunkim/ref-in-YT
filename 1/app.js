@@ -4,14 +4,17 @@ const COUNT = 10;
 const numbers = [];
 
 let player;
+let refbutton;
 let STARTTIME, ENDTIME;
-
+let REFSTATE = "null";
+let button_text = "arnstei et al. 1923";
 
 const objects = [
-    {starttime: 1, endtime: 7, display: "sample reference indicator 1", url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s"},
-    {starttime: 10, endtime: 15, display: "sample reference indicator 2", url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub"},
+    {starttime: 1, endtime: 7, button_text: "sample reference indicator 1", url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s"},
+    {starttime: 10, endtime: 15, button_text: "sample reference indicator 2 sample reference indicator 2", url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub"},
 
 ];
+
 
 
 
@@ -58,12 +61,35 @@ function onYouTubeIframeAPIReady() {
             'onStateChange': onPlayerStateChange
 
         }
-    });
+    });  
+
 }
 
 function onPlayerReady(event) {
     setInterval(updateTime, 1);
-    console.log("time alert");
+    console.log("onplayerready set, interval set.");
+    refbutton = document.getElementById("_ref");
+    
+    refbutton.addEventListener('mouseover', function(){
+      document.getElementById("monitor").textContent = "mouseover±±±±";
+      refbutton.classList.add("button-preview");
+    });
+
+    refbutton.addEventListener('mouseout', function(){
+      document.getElementById("monitor").textContent = "mouseout---";
+      refbutton.classList.remove("button-preview"); 
+    });
+    
+    refbutton.addEventListener('touchstart', function(){
+      document.getElementById("monitor").textContent = "touchstart";
+      refbutton.classList.add("button-preview");
+    });
+
+    refbutton.addEventListener('touchend', function(){
+      document.getElementById("monitor").textContent = "touchend---";
+      refbutton.classList.remove("button-preview");
+    });
+  
 }
 var done = false;
 var count = 0;
@@ -85,7 +111,10 @@ function traverseList(currentTime) {
       
       if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
         document.getElementById("_ref").style.visibility = "visible";
-        //document.getElementById('display').textContent = obj.;
+        REFSTATE = 'standby';
+
+
+        document.getElementById('button_text').textContent = obj.button_text;
         // Perform operations for the current object
         
         // Add any other logic or operations here
@@ -102,11 +131,22 @@ function traverseList(currentTime) {
 
 function updateTime() {
     const time = player.getCurrentTime();
-    document.getElementById('time').textContent = time;
+    //document.getElementById('time').textContent = time;
     traverseList(time);
     
 
 }
+
+
+
+/*
+refbutton.addEventListener('touchend', function(){
+  refbutton.classList.remove("button-preview");
+  refbutton.classList.add("button-standby");
+});
+*/
+
+
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
