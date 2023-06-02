@@ -9,33 +9,45 @@
 
 </head>
 
+<!-- Add a top toolbar-->
 
 
 <body>
-
+    
 
 
 
     <div class="video-container">
         <div id="player"></div>
-        <div id=_ref a href="#" class="button"  onclick="clickReferenceButton()">
-            <span class="icon">!!</span>
-            <span class="button-text"><span id=button_text></span></span>
-        </div>
-            
     </div>
+
+    <div id=_ref a href="#" class="button"  onclick="clickReferenceButton()"> <!-- when clicked, move to the equivalent item in the bibilography. hold that. -->
+        <span class="icon">!!</span>
+        <span class="button-text"><span id=button_text></span></span>
+    </div>
+
+    <!--
     <div id="monitor">Current message: <span id="monitor"></span></div>
+    -->
+
     <div class="video-metadata">
         <div id="metadata-field">
-
-            <h1 id="title"></h1>
-            <p>channelTitle: <span id="channelTitle"></span></p>
-            <p>Likes: <span id="likes"></span></p>
-            <p>Dislikes: <span id="dislikes"></span></p>
-            <p>Description: <span id="description"></span></p>
-
-
+            <div id="video-title"></div>
+            <div id="video-basicinfo"></div> <!-- -->
         </div>
+    </div>
+
+    <div class="topnav">
+        <a class="active" href="#home">Description</a> <!-- display discription below when clicked -->
+        <a href="#news">Transcript</a>
+
+        <!-- These two below are to be added only to the treatment group -->
+        <a href="#contact">Bibliography</a> 
+        <a href="#about">Credit</a>
+      </div> 
+
+    <div class="read_more" id="read_more">
+        <div id="description" style="word-wrap: break-word;word-break: normal;white-space: pre-wrap;"></div>
     </div>
 
     

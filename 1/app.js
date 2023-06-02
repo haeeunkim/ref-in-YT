@@ -38,16 +38,13 @@ fetch(API_URL)
         const statistics = data.items[0].statistics;
 
         // Display the video metadata on the webpage
-        document.getElementById('title').textContent = metadata.title;
+        document.getElementById('video-title').textContent = metadata.title;
         document.getElementById('description').textContent = metadata.description;
-        document.getElementById('channelTitle').textContent = metadata.channelTitle;
+        document.getElementById('video-basicinfo').textContent = `${metadata.channelTitle}    ${statistics.likeCount}`; // change to subscriber count
 
-
-        document.getElementById('likes').textContent = statistics.likeCount;
-        document.getElementById('dislikes').textContent = statistics.dislikeCount;
-
-        //console.log(metadata);
-        //console.log(statistics);
+        console.log(metadata.description);
+        //document.getElementById('likes').textContent = statistics.likeCount;
+        //document.getElementById('dislikes').textContent = statistics.dislikeCount;
         // Add more properties as needed
     })
     .catch(error => console.error(error));
@@ -162,11 +159,11 @@ function clickReferenceButton() {
 if (player && player.getPlayerState() === YT.PlayerState.PLAYING && REFSTATE == "preview") {
     player.pauseVideo();
     console.log("pause toggle");
-    document.getElementById("metadata-field").style.visibility = "visible";
+    document.getElementById("read_more").style.visibility = "visible";
   } else {
     player.playVideo();
     console.log("play toggle");
-    document.getElementById("metadata-field").style.visibility = "hidden";
+    document.getElementById("read_more").style.visibility = "hidden";
   }
     
 
