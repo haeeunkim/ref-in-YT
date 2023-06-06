@@ -7,97 +7,117 @@ let player;
 let refbutton;
 let STARTTIME, ENDTIME;
 let REFSTATE = "null";
-let button_text = "arnstei et al. 1923";
+let CURRENT_REF;
 
+// a dummy referernce list in objects.
+// todo: check id integrity?
 const objects = [
-    {starttime: 1, endtime: 7, button_text: "sample reference indicator 1", url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s"},
-    {starttime: 10, endtime: 15, button_text: "sample reference indicator 2 sample reference indicator 2", url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub"},
+  {
+    starttime: 1, endtime: 7, id: "bibID_1",
+    button_text: "sample reference indicator 1",
+    url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s",
+    annotation_text: "this is an annotation text for sample 1"
+  },
+  {
+    starttime: 10, endtime: 15, id: "bibID_2",
+    button_text: "sample reference indicator 2 sample reference indicator 2",
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub",
+    annotation_text: "this is an annotation text for sample 2"
+  },
 
 ];
 
 
-
-
-
-
-// Replace YOUR_API_KEY with your YouTube Data API key
+// YouTube API credentials
 const API_KEY = "AIzaSyAbjDRiwBgSX2HcFDHfzIszJsKoj3st46I";
-
-// Replace VIDEO_ID with the ID of the YouTube video you want to retrieve metadata for
-const VIDEO_ID = "M-K7mxdN62M";
-
-// Define the URL of the API endpoint to retrieve the video metadata
+const VIDEO_ID = "M-K7mxdN62M"; // a dummy YT id
 const API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${VIDEO_ID}&key=${API_KEY}`;
 
 // Make an HTTP GET request to the API endpoint using fetch
 fetch(API_URL)
-    .then(response => response.json())
-    .then(data => {
-        // Extract the video metadata from the API response
-        const metadata = data.items[0].snippet;
-        const statistics = data.items[0].statistics;
+  .then(response => response.json())
+  .then(data => {
+    // Extract the video metadata from the API response
+    const metadata = data.items[0].snippet;
 
-        // Display the video metadata on the webpage
-        document.getElementById('video-title').textContent = metadata.title;
-        document.getElementById('description').textContent = metadata.description;
-        document.getElementById('video-basicinfo').textContent = `${metadata.channelTitle}    ${statistics.likeCount}`; // change to subscriber count
+    // Display the video metadata on the webpage
+    document.getElementById('video-title').textContent = metadata.title;
+    document.getElementById('video-basicinfo').textContent = `${metadata.channelTitle}    ${statistics.likeCount}`; // change to subscriber count
 
-        console.log(metadata.description);
-        //document.getElementById('likes').textContent = statistics.likeCount;
-        //document.getElementById('dislikes').textContent = statistics.dislikeCount;
-        // Add more properties as needed
-    })
-    .catch(error => console.error(error));
+    //const statistics = data.items[0].statistics;
+    //document.getElementById('description').textContent = metadata.description;
+    //document.getElementById('likes').textContent = statistics.likeCount;
+    //document.getElementById('dislikes').textContent = statistics.dislikeCount;
+    // Add more properties as needed
+
+
+
+  })
+  .catch(error => console.error(error));
+
+
+
+
 
 
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        videoId: VIDEO_ID,
-        events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+  player = new YT.Player('player', {
+    videoId: VIDEO_ID,
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
 
-        }
-    });  
+    }
+  });
 
 }
 
 function onPlayerReady(event) {
-    setInterval(updateTime, 1);
-    console.log("onplayerready set, interval set.");
-    refbutton = document.getElementById("_ref");
-    
-    refbutton.addEventListener('mouseover', function(){
-      document.getElementById("monitor").textContent = "mouseover±±±±";
-      refbutton.classList.add("button-preview");
-      REFSTATE = "preview";
-    });
+  setInterval(updateTime, 1);
+  console.log("onplayerready set, interval set.");
+  refbutton = document.getElementById("_ref");
 
-    refbutton.addEventListener('mouseout', function(){
-      document.getElementById("monitor").textContent = "mouseout---";
-      refbutton.classList.remove("button-preview"); 
-      REFSTATE = "standby";
-    });
-    
-    refbutton.addEventListener('touchstart', function(){
-      document.getElementById("monitor").textContent = "touchstart";
-      refbutton.classList.add("button-preview");
-      REFSTATE = "preview";
-    });
+  refbutton.addEventListener('mouseover', function () {
+    document.getElementById("monitor").textContent = "mouseover±±±±";
+    refbutton.classList.add("button-preview");
+    REFSTATE = "preview";
+  });
 
-    refbutton.addEventListener('touchend', function(){
-      document.getElementById("monitor").textContent = "touchend---";
-      refbutton.classList.remove("button-preview");
-      REFSTATE = "standby";
-    });
-  
+  refbutton.addEventListener('mouseout', function () {
+    document.getElementById("monitor").textContent = "mouseout---";
+    refbutton.classList.remove("button-preview");
+    REFSTATE = "standby";
+  });
+
+  refbutton.addEventListener('touchstart', function () {
+    document.getElementById("monitor").textContent = "touchstart";
+    refbutton.classList.add("button-preview");
+    REFSTATE = "preview";
+  });
+
+  refbutton.addEventListener('touchend', function () {
+    document.getElementById("monitor").textContent = "touchend---";
+    refbutton.classList.remove("button-preview");
+    REFSTATE = "standby";
+  });
+
+
+
+  // think again about where to put this
+  $('read_more').attr("id", "bibliography");
+  $.each(objects, function (i, objects) {
+    $("#bibliography").append("<li><a href='" + objects.url + "'  id=" + objects.id + ">" + objects.annotation_text + "</a></li>");
+    // Todo: remove duplicates
+    // Todo: how to address the elements?
+  })
+
 }
 var done = false;
 var count = 0;
 function onPlayerStateChange(event) {
-    // if playing, calcula
-    console.log("statechange alert %d %s", count, event.data);
-    count = count + 1;
+  // if playing, calcula
+  console.log("statechange alert %d %s", count, event.data);
+  count = count + 1;
 }
 
 function displaySomething() {
@@ -106,70 +126,48 @@ function displaySomething() {
 
 
 function traverseList(currentTime) {
-    
-    for (let i = 0; i < objects.length; i++) {
-      const obj = objects[i];
-      
-      if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
-        document.getElementById("_ref").style.visibility = "visible";
-        
 
+  for (let i = 0; i < objects.length; i++) {
+    const obj = objects[i];
+    CURRENT_REF = obj;
 
-        document.getElementById('button_text').textContent = obj.button_text;
-        // Perform operations for the current object
-        
-        // Add any other logic or operations here
-        break; // Exit the loop once the current object is found
-      }
-      document.getElementById("_ref").style.visibility = "hidden";
+    if (currentTime >= obj.starttime && currentTime <= obj.endtime) {
+      document.getElementById("_ref").style.visibility = "visible";
+      document.getElementById('button_text').textContent = obj.button_text;
+      break; // Exit the loop once the current object is found
     }
+    document.getElementById("_ref").style.visibility = "hidden";
   }
-
-
-  
-  
-
-
-function updateTime() {
-    const time = player.getCurrentTime();
-    //document.getElementById('time').textContent = time;
-    traverseList(time);
-    
-
 }
 
 
 
-/*
-refbutton.addEventListener('touchend', function(){
-  refbutton.classList.remove("button-preview");
-  refbutton.classList.add("button-standby");
-});
-*/
 
+
+
+function updateTime() {
+  const time = player.getCurrentTime();
+  //document.getElementById('time').textContent = time;
+  traverseList(time);
+
+
+}
 
 
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
+// TODO: how to work with the video play/pause button
 function clickReferenceButton() {
-    
-    console.log('pause the video');
-    console.log('and new tab leading to a reference page.');
-
-if (player && player.getPlayerState() === YT.PlayerState.PLAYING && REFSTATE == "preview") {
+  if (player && player.getPlayerState() === YT.PlayerState.PLAYING && REFSTATE == "preview") {
     player.pauseVideo();
-    console.log("pause toggle");
-    document.getElementById("read_more").style.visibility = "visible";
+    document.getElementById(CURRENT_REF.id).style.backgroundColor = "yellow";
+
   } else {
     player.playVideo();
-    console.log("play toggle");
-    document.getElementById("read_more").style.visibility = "hidden";
+    document.getElementById(CURRENT_REF.id).style.backgroundColor = "";
   }
-    
-
-    //window.open("https://www.educative.io/", "_blank");
-  }
+}
 
 
-    
+
 

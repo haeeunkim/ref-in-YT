@@ -28,6 +28,8 @@
 
 
 .read_more {
+  border: 1px solid green;
+
   font-size: 10px;
 }
 
@@ -88,6 +90,11 @@
     /* End */
   }
   
+  #top-elements {
+    top: 0;
+    position: sticky;
+  }
+
   #video-title {
     background-color: yellow;
   }
@@ -127,10 +134,10 @@
   .button {
 
     position: absolute;
-    top: 70%;
+    top: 30%;
     left: 10px;
     
-    opacity: 1; 
+    opacity: 70%; 
     transition: opacity .3s ease;
     cursor: pointer;
 
@@ -138,7 +145,7 @@
     color: white;
     text-decoration: none;
     border-radius: 60px;
-    height: 32px;
+    height: 40px;
     display: inline-flex;
     align-items: center;
     overflow:hidden;

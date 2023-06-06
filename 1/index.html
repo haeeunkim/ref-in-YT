@@ -5,8 +5,8 @@
 <head>
     <link href="../style.css" rel="stylesheet"/> 
     <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="app.js"></script>
-
 </head>
 
 <!-- Add a top toolbar-->
@@ -14,8 +14,19 @@
 
 <body>
     
+    <div id="top-elements">
+    <div id="monitor">Current message: <span id="monitor"></span></div> 
+    <div class="topnav">
+        <a class="active" href="#home">Main</a>
+        <a>Title of the video </a>
+        <a class="active" href="#home">&lt; Prev</a>
+        <a class="active" href="#home">Next &gt;</a> <!-- display discription below when clicked -->
+        <!--<a href="#news">Transcript</a>-->
 
-
+        <!-- These two below are to be added only to the treatment group -->
+        
+        <!--<a href="#about">Credit</a>-->
+    </div> 
 
     <div class="video-container">
         <div id="player"></div>
@@ -26,32 +37,22 @@
         <span class="button-text"><span id=button_text></span></span>
     </div>
 
-    <!--
-    <div id="monitor">Current message: <span id="monitor"></span></div>
-    -->
 
     <div class="video-metadata">
         <div id="metadata-field">
             <div id="video-title"></div>
-            <div id="video-basicinfo"></div> <!-- -->
+            <div id="video-basicinfo"></div>
         </div>
     </div>
 
-    <div class="topnav">
-        <a class="active" href="#home">Description</a> <!-- display discription below when clicked -->
-        <a href="#news">Transcript</a>
-
-        <!-- These two below are to be added only to the treatment group -->
-        <a href="#contact">Bibliography</a> 
-        <a href="#about">Credit</a>
-      </div> 
+    </div>
 
     <div class="read_more" id="read_more">
-        <div id="description" style="word-wrap: break-word;word-break: normal;white-space: pre-wrap;"></div>
+        <ul id="bibliography"></ul>
+     <!--   <div id="description" style="word-wrap: break-word;word-break: normal;white-space: pre-wrap;"></div> -->
     </div>
 
     
-    <a href="test.html" target="_self"> >> Link </a>
 
 
 
