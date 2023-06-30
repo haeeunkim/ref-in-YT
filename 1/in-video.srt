@@ -1,70 +1,68 @@
-NOTE
-
 16
 00:01:01,840 -->  00:01:23,979
-REF
+Check Reference
 
 
 22
 00:01:23,979 --> 00:01:33,299
-REF
+Check Reference
 
 24
 00:01:33,299 --> 00:01:47,840
-REF
+Check Reference
 
 
 32
 00:02:07,360 --> 00:02:19,269
-REF
+Check Reference
 
 
 37
 00:02:26,580 --> 00:02:46,560
-REF
+Check Reference
 
 
 45
 00:02:54,970 -->00:03:06,170
-REF
+Check Reference
 
 
 59
 00:03:43,349 --> 00:04:01,140
-REF
+Check Reference
 
 
 64
 00:04:01,140 --> 00:04:30,430
-REF
+Check Reference
 
 
 71
 00:04:30,430 --> 00:04:50,680
-NOTE
+Check Reference
 
 77
 00:04:50,680 --> 00:05:01,180
-REF
+Check Reference
 
 90
 00:05:32,949 --> 00:05:38,830
-REF
+Check Reference
 
 
 94
 00:05:49,960 --> 00:06:10,220
-REF
+Check Reference
 
 
 111
 00:07:03,620 --> 00:07:48,370
-NOTE
+Check Reference
 
 127
 00:08:11,419 --> 00:08:21,080
-REF
+Check Reference
 
 135
 00:08:42,809 --> 00:08:50,620
-REF
+Check Reference

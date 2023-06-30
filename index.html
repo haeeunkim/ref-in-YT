@@ -4,33 +4,53 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-43W3HRWLBQ');
-</script>
+    gtag('config', 'G-43W3HRWLBQ');
+  </script>
 
-    <link rel="stylesheet" type="text/css" href="style.css">
-   
-
-
- <body>
-
-    <div class="textbox">
-        Hello world
-        This is a textbox <br>
-        And this will be a landing page<br>
-        with some instruction about the experiement <br> <br>
-        Let's start the experiment <a href="1/index.html" target="_self"> >> Link </a> 
-
-
-        </div>
+  <link rel="stylesheet" type="text/css" href="style.css">
 
 
 
- </body>
- </html>
+<body>
+
+  <div class="textbox">
+    Hello world
+    This is a textbox <br>
+    And this will be a landing page<br>
+    with some instruction about the experiement <br> <br>
+    Let's start the experiment <a href="1/index.html" target="_self"> >> Link </a>
+
+
+  </div>
+
+  <script>
+
+// Requiring fs module in which
+// readFile function is defined.
+const fs = require('fs')
+ 
+ // Reading data in utf-8 format
+ // which is a type of character set.
+ // Instead of 'utf-8' it can be
+ // other character set also like 'ascii'
+ fs.readFile('reference_annotated.txt', 'utf-8', (err, data) => {
+     if (err) throw err;
+  
+     // Converting Raw Buffer to text
+     // data using tostring function.
+     console.log(data);
+ })
+  </script>
+
+
+
+</body>
+
+</html>
