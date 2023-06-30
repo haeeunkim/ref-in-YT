@@ -73,12 +73,14 @@ fetch(API_URL)
   .then(data => {
     // Extract the video metadata from the API response
     const metadata = data.items[0].snippet;
+    const statistics = data.items[0].statistics;
 
     // Display the video metadata on the webpage
+    
     document.getElementById('video-title').textContent = metadata.title;
     document.getElementById('video-basicinfo').textContent = `${metadata.channelTitle}    ${statistics.likeCount}`; // change to subscriber count
 
-    //const statistics = data.items[0].statistics;
+    
     //document.getElementById('description').textContent = metadata.description;
     //document.getElementById('likes').textContent = statistics.likeCount;
     //document.getElementById('dislikes').textContent = statistics.dislikeCount;
