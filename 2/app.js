@@ -14,13 +14,16 @@ $().ready(function() {
   $("#text").html("Text added by jQuery code.");
 });
 
+
+
+
+
 const objects = [
   {
-    starttime: 1, endtime: 7, id: "bibID_1",
-    button_text: "sample reference indicator 1",
-    url: "https://www.youtube.com/watch?v=lXfEK8G8CUI&t=499s",
-    annotation_text: "this is an annotation text for sample 1"
+    starttime: 1, endtime: 7, id: "bibAlarm",
+    button_text: "Check references of this video",
   },
+  /*
   {
     starttime: 10, endtime: 15, id: "bibID_2",
     button_text: "sample reference indicator 2 sample reference indicator 2",
@@ -54,7 +57,7 @@ const objects = [
     button_text: "sample reference indicator 6",
     url: "https://www.sciencedirect.com/science/article/abs/pii/S1090513819302429?via%3Dihub",
     annotation_text: "this is an annotation text for sample 6"
-  },
+  },*/
 
 
 
@@ -219,14 +222,24 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
 // traverse the list regardless of the button interaction
 // let the player go? i personally prefer "stop to ponder" approach, but it's simpler interaction-wise.
 function clickReferenceButton() {
-  if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+  /*if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
     player.pauseVideo();
     document.getElementById(CURRENT_REF.id).style.backgroundColor = "yellow";
 
   } else {
     player.playVideo();
     document.getElementById(CURRENT_REF.id).style.backgroundColor = "";
-  }
+  }*/
+  $.ajax({
+    url: 'bibliography.html', // Replace with the path to your local HTML file
+    dataType: 'html',
+    success: function(data) {
+      $('#displayText').html(data);
+    },
+    error: function(xhr, status, error) {
+      console.error('Failed to load HTML content:', error);
+    }
+  });
 }
 
 
