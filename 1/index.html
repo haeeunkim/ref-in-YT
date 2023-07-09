@@ -4,17 +4,17 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-43W3HRWLBQ');
-</script>
+        gtag('config', 'G-43W3HRWLBQ');
+    </script>
 
-    <link href="../style.css" rel="stylesheet"/> 
+    <link href="../style.css" rel="stylesheet" />
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="app.js"></script>
@@ -24,41 +24,43 @@
 
 
 <body>
-    
+
     <div id="top-elements">
-    <div id="monitor">Current message: <span id="monitor"></span></div> 
-    <div class="topnav">
-        <a class="active" href="#home">Main</a>
-        <a>Title of the video </a>
-        <a href="#home">&lt; Prev</a>
-        <a href="#home">Next &gt;</a> <!-- display discription below when clicked -->
-    </div> 
-
-    <div class="video-container">
-        <div id="player"></div>
-    </div>
-
-    <div id=_ref a href="#" class="button"  onclick="clickReferenceButton()"> <!-- when clicked, move to the equivalent item in the bibilography. hold that. -->
-        <span class="icon">!!</span>
-        <span class="button-text"><span id=button_text></span></span>
-    </div>
-
-
-    <div class="video-metadata">
-        <div id="metadata-field">
-            <div id="video-title"></div>
-            <div id="video-basicinfo"></div>
+        <div id="monitor">Current message: <span id="monitor"></span></div>
+        <a href="../2/index.html" target="_self"> >> to the next video </a>
+        <div class="topnav">
+            <a class="active" href="#home">Main</a>
+            <a>Title of the video </a>
+            <a href="#home">&lt; Prev</a>
+            <a href="#home">Next &gt;</a> <!-- display discription below when clicked -->
         </div>
-    </div>
+
+        <div class="video-container">
+            <div id="player"></div>
+        </div>
+
+        <div id=_ref a href="#" class="button" onclick="clickReferenceButton()">
+            <!-- when clicked, move to the equivalent item in the bibilography. hold that. -->
+            <span class="icon">!!</span>
+            <span class="button-text"><span id=button_text></span></span>
+        </div>
+
+
+        <div class="video-metadata">
+            <div id="metadata-field">
+                <div id="video-title"></div>
+                <div id="video-basicinfo"></div>
+            </div>
+        </div>
 
     </div>
 
     <div class="read_more" id="read_more">
         <ul id="bibliography"></ul>
-     <!--   <div id="description" style="word-wrap: break-word;word-break: normal;white-space: pre-wrap;"></div> -->
+        <!--   <div id="description" style="word-wrap: break-word;word-break: normal;white-space: pre-wrap;"></div> -->
     </div>
 
-    
+
 
 
 

@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
-
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
 <script>
@@ -58,6 +58,7 @@
     
     <div id="top-elements">
     <div id="monitor">Current message: <span id="monitor"></span></div> 
+    <a href="../index.html" target="_self"> >> to the main page </a>
     <div class="topnav">
         <a class="active" href="#home">Main</a>
         <a>Title of the video </a>
@@ -82,9 +83,20 @@
         </div>
     </div>
 
+    <div id="more-info">
+        <div id="YT-description" onclick="clickDescription()"> Description </div>
+        <div id="REF-bibliography" onclick="clickBibliography()"> References </div>
     </div>
 
+    </div>
 
+    <div id="text"></div>
+    <div id="dummytext1">
+        This is a dummy text 1
+    </div> 
+    <div id="dummytext2">
+        This is a dummy text 2
+    </div> 
     <div w3-include-html="bibliography.html"></div> 
     
 

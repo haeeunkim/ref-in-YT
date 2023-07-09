@@ -12,7 +12,9 @@ let CURRENT_REF;
 // a dummy referernce list in objects.
 // todo: check id integrity?
 // id 
-
+$().ready(function() {
+  $("#text").html("Text added by jQuery code.");
+});
 
 
 const objects = [
@@ -206,6 +208,10 @@ function clickReferenceButton() {
   }
 }
 
+
+function clickDescription() {
+  document.getElementById("YT-description").style.visibility = "display";  
+}
 
 
 
