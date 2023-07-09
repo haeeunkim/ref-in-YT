@@ -9,13 +9,10 @@ let STARTTIME, ENDTIME;
 let REFSTATE = "null";
 let CURRENT_REF;
 
-// a dummy referernce list in objects.
-// todo: check id integrity?
-// id 
+
 $().ready(function() {
   $("#text").html("Text added by jQuery code.");
 });
-
 
 const objects = [
   {
@@ -68,6 +65,8 @@ const objects = [
 const API_KEY = "AIzaSyAbjDRiwBgSX2HcFDHfzIszJsKoj3st46I";
 const VIDEO_ID = "M-K7mxdN62M"; // a dummy YT id
 const API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${VIDEO_ID}&key=${API_KEY}`;
+let description;
+
 
 // Make an HTTP GET request to the API endpoint using fetch
 fetch(API_URL)
@@ -83,7 +82,7 @@ fetch(API_URL)
     document.getElementById('video-basicinfo').textContent = `${metadata.channelTitle}    ${statistics.likeCount}`; // change to subscriber count
 
     
-    //document.getElementById('description').textContent = metadata.description;
+    description = metadata.description;
     //document.getElementById('likes').textContent = statistics.likeCount;
     //document.getElementById('dislikes').textContent = statistics.dislikeCount;
     // Add more properties as needed
@@ -94,6 +93,28 @@ fetch(API_URL)
   .catch(error => console.error(error));
 
 
+  $(document).ready(function() {
+    // Button 1 click action
+    $('#btn1').click(function() {
+      //.css("word-wrap: break-word;word-break: normal;white-space: pre-wrap;")
+      $('#displayText').text(description).css('white-space', 'pre-wrap');
+    });
+  
+    // Button 2 click action
+   
+  $('#btn2').click(function() {
+    $.ajax({
+      url: 'bibliography.html', // Replace with the path to your local HTML file
+      dataType: 'html',
+      success: function(data) {
+        $('#displayText').html(data);
+      },
+      error: function(xhr, status, error) {
+        console.error('Failed to load HTML content:', error);
+      }
+    });
+});
+  });
 
 
 

@@ -3,109 +3,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-43W3HRWLBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-43W3HRWLBQ');
-</script>
+    gtag('config', 'G-43W3HRWLBQ');
+  </script>
 
-    <link href="../style.css" rel="stylesheet"/> 
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="app.js"></script>
+  <link href="../style.css" rel="stylesheet" />
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="app.js"></script>
 </head>
 
 <!-- Add a top toolbar-->
 
 
 <script>
-    function includeHTML() {
-      var z, i, elmnt, file, xhttp;
-      /*loop through a collection of all HTML elements:*/
-      z = document.getElementsByTagName("*");
-      for (i = 0; i < z.length; i++) {
-        elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
-        file = elmnt.getAttribute("w3-include-html");
-        if (file) {
-          /*make an HTTP request using the attribute value as the file name:*/
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-              if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-              if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-              /*remove the attribute, and call this function once more:*/
-              elmnt.removeAttribute("w3-include-html");
-              includeHTML();
-            }
-          }      
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          /*exit the function:*/
-          return;
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /*loop through a collection of all HTML elements:*/
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /*make an HTTP request using the attribute value as the file name:*/
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4) {
+            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+            /*remove the attribute, and call this function once more:*/
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
         }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /*exit the function:*/
+        return;
       }
-    };
-    </script>
+    }
+  };
+</script>
 
 
 <body>
-    
-    <div id="top-elements">
-    <div id="monitor">Current message: <span id="monitor"></span></div> 
+
+  <div id="top-elements">
+    <div id="monitor">Current message: <span id="monitor"></span></div>
     <a href="../index.html" target="_self"> >> to the main page </a>
     <div class="topnav">
-        <a class="active" href="#home">Main</a>
-        <a>Title of the video </a>
-        <a href="#home">&lt; Prev</a>
-        <a href="#home">Next &gt;</a> <!-- display discription below when clicked -->
-    </div> 
-
-    <div class="video-container">
-        <div id="player"></div>
+      <a class="active" href="#home">Main</a>
+      <a>Title of the video </a>
+      <a href="#home">&lt; Prev</a>
+      <a href="#home">Next &gt;</a> <!-- display discription below when clicked -->
     </div>
 
-    <div id=_ref a href="#" class="button"  onclick="clickReferenceButton()"> <!-- when clicked, move to the equivalent item in the bibilography. hold that. -->
-        <span class="icon">!!</span>
-        <span class="button-text"><span id=button_text></span></span>
+    <div class="video-container">
+      <div id="player"></div>
+    </div>
+
+    <div id=_ref a href="#" class="button" onclick="clickReferenceButton()">
+      <!-- when clicked, move to the equivalent item in the bibilography. hold that. -->
+      <span class="icon">!!</span>
+      <span class="button-text"><span id=button_text></span></span>
     </div>
 
 
     <div class="video-metadata">
-        <div id="metadata-field">
-            <div id="video-title"></div>
-            <div id="video-basicinfo"></div>
-        </div>
+      <div id="metadata-field">
+        <div id="video-title"></div>
+        <div id="video-basicinfo"></div>
+      </div>
+      <button id="btn1">Description</button>
+      <button id="btn2">References</button>
     </div>
 
-    <div id="more-info">
-        <div id="YT-description" onclick="clickDescription()"> Description </div>
-        <div id="REF-bibliography" onclick="clickBibliography()"> References </div>
-    </div>
-
-    </div>
-
-    <div id="text"></div>
-    <div id="dummytext1">
-        This is a dummy text 1
-    </div> 
-    <div id="dummytext2">
-        This is a dummy text 2
-    </div> 
-    <div w3-include-html="bibliography.html"></div> 
-    
-
-    
 
 
-    <script>
-        includeHTML();
-        </script
+  </div>
+
+
+
+
+  <div id="displayText">Initial Text</div>
+  <!-- <div w3-include-html="bibliography.html"></div> -->
+
+
+
+
+
+  <script>
+    includeHTML();
+  </script
 
 
 </body>
