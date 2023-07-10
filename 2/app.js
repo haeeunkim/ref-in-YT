@@ -21,7 +21,6 @@ $().ready(function() {
 const objects = [
   {
     starttime: 1, endtime: 7, id: "bibAlarm",
-    annotation_text: "this is an annotation text for sample 3"
     button_text: "Check references of this video ",
   },
 
