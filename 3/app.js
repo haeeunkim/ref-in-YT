@@ -21,7 +21,6 @@ $().ready(function() {
 const objects = [
   {
     starttime: 1, endtime: 7, id: "bibAlarm",
-    annotation_text: "this is an annotation text for sample 3"
     button_text: "Check references of this video ",
   },
 
@@ -30,7 +29,7 @@ const objects = [
 
 // YouTube API credentials
 const API_KEY = "AIzaSyAbjDRiwBgSX2HcFDHfzIszJsKoj3st46I";
-const VIDEO_ID = "M-K7mxdN62M"; // a dummy YT id
+const VIDEO_ID = "cX0MNCQvBt8"; // a dummy YT id
 const API_URL = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${VIDEO_ID}&key=${API_KEY}`;
 let description;
 
